@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>All-in-One Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="blob blob-a" aria-hidden="true"></div>
+  <div class="blob blob-b" aria-hidden="true"></div>
+
+  <div class="doodle-field" aria-hidden="true">
+
+    <div class="doodle-group" data-group="standard">
+      <span class="doodle" style="top:8%; left:6%; font-size:2.1rem; animation-delay:0s; animation-duration:7s;">➕</span>
+      <span class="doodle" style="top:16%; right:8%; font-size:1.8rem; animation-delay:.8s; animation-duration:8.5s;">✖️</span>
+      <span class="doodle" style="bottom:14%; left:9%; font-size:2.3rem; animation-delay:1.4s; animation-duration:6.5s;">π</span>
+      <span class="doodle" style="bottom:10%; right:7%; font-size:2rem; animation-delay:.4s; animation-duration:9s;">∑</span>
+      <span class="doodle" style="top:44%; left:4%; font-size:1.6rem; animation-delay:2s; animation-duration:7.5s;">÷</span>
+      <span class="doodle" style="top:38%; right:5%; font-size:1.7rem; animation-delay:1s; animation-duration:8s;">√</span>
+    </div>
+
+    <div class="doodle-group" data-group="bmi">
+      <span class="doodle" style="top:10%; left:8%; font-size:2.2rem; animation-delay:0s; animation-duration:7s;">⚖️</span>
+      <span class="doodle" style="top:18%; right:7%; font-size:2rem; animation-delay:.6s; animation-duration:8s;">🍎</span>
+      <span class="doodle" style="bottom:16%; left:6%; font-size:2rem; animation-delay:1.2s; animation-duration:6.8s;">💪</span>
+      <span class="doodle" style="bottom:10%; right:9%; font-size:2.1rem; animation-delay:.3s; animation-duration:9s;">🥗</span>
+      <span class="doodle" style="top:46%; right:4%; font-size:1.8rem; animation-delay:1.6s; animation-duration:7.5s;">🩺</span>
+    </div>
+
+    <div class="doodle-group" data-group="age">
+      <span class="doodle" style="top:9%; left:7%; font-size:2.2rem; animation-delay:0s; animation-duration:7s;">🎂</span>
+      <span class="doodle" style="top:16%; right:8%; font-size:2rem; animation-delay:.7s; animation-duration:8.2s;">🎈</span>
+      <span class="doodle" style="bottom:15%; left:8%; font-size:2rem; animation-delay:1.3s; animation-duration:6.6s;">🎉</span>
+      <span class="doodle" style="bottom:9%; right:6%; font-size:2rem; animation-delay:.5s; animation-duration:9s;">⏳</span>
+      <span class="doodle" style="top:44%; left:4%; font-size:1.7rem; animation-delay:1.8s; animation-duration:7.8s;">🕰️</span>
+    </div>
+
+    <div class="doodle-group" data-group="cgpa">
+      <span class="doodle" style="top:9%; left:7%; font-size:2.2rem; animation-delay:0s; animation-duration:7s;">🎓</span>
+      <span class="doodle" style="top:17%; right:7%; font-size:2rem; animation-delay:.6s; animation-duration:8.3s;">📚</span>
+      <span class="doodle" style="bottom:15%; left:7%; font-size:1.9rem; animation-delay:1.1s; animation-duration:6.7s;">✏️</span>
+      <span class="doodle" style="bottom:10%; right:8%; font-size:2.1rem; animation-delay:.4s; animation-duration:9s;">🏆</span>
+      <span class="doodle" style="top:45%; right:4%; font-size:1.7rem; animation-delay:1.7s; animation-duration:7.6s;">📝</span>
+    </div>
+
+    <div class="doodle-group" data-group="height">
+      <span class="doodle" style="top:10%; left:7%; font-size:2.1rem; animation-delay:0s; animation-duration:7s;">📏</span>
+      <span class="doodle" style="top:18%; right:8%; font-size:1.9rem; animation-delay:.7s; animation-duration:8.2s;">📐</span>
+      <span class="doodle" style="bottom:16%; left:8%; font-size:2rem; animation-delay:1.2s; animation-duration:6.9s;">🧍</span>
+      <span class="doodle" style="bottom:10%; right:7%; font-size:1.9rem; animation-delay:.5s; animation-duration:9s;">🪜</span>
+    </div>
+
+    <div class="doodle-group" data-group="distance">
+      <span class="doodle" style="top:9%; left:7%; font-size:2.1rem; animation-delay:0s; animation-duration:7s;">🌍</span>
+      <span class="doodle" style="top:17%; right:8%; font-size:2rem; animation-delay:.6s; animation-duration:8.2s;">✈️</span>
+      <span class="doodle" style="bottom:15%; left:7%; font-size:2rem; animation-delay:1.1s; animation-duration:6.8s;">🚗</span>
+      <span class="doodle" style="bottom:10%; right:8%; font-size:2rem; animation-delay:.4s; animation-duration:9s;">🧭</span>
+    </div>
+
+  </div>
+  <div class="math-bg" id="mathBg" aria-hidden="true"></div>
+
+  <main class="stage">
+    <h1 class="title">All-in-One Calculator</h1>
+
+    <section class="calc" aria-label="Calculator">
+
+      <div class="tabs" id="tabs" role="tablist" aria-label="Calculator type">
+        <button class="tab active" data-tab="standard" role="tab" aria-selected="true">🧮 Standard</button>
+        <button class="tab" data-tab="scientific" role="tab" aria-selected="false">🔬 Scientific</button>
+        <button class="tab" data-tab="bmi" role="tab" aria-selected="false">⚖️ BMI</button>
+        <button class="tab" data-tab="age" role="tab" aria-selected="false">🎂 Age</button>
+        <button class="tab" data-tab="cgpa" role="tab" aria-selected="false">🎓 CGPA</button>
+        <button class="tab" data-tab="height" role="tab" aria-selected="false">📏 Height</button>
+        <button class="tab" data-tab="distance" role="tab" aria-selected="false">🌍 Distance</button>
+      </div>
+
+      <!-- ===================== STANDARD ===================== -->
+      <div class="panel active" data-panel="standard">
+        <div class="display" id="display-standard">
+          <div class="expression" id="expr-standard">&nbsp;</div>
+          <div class="value" id="value-standard">0</div>
+        </div>
+        <div class="keys keys-standard" data-engine="standard">
+          <button class="key fn clear" data-action="clear">C</button>
+          <button class="key fn" data-action="backspace" aria-label="Delete">&#9003;</button>
+          <button class="key fn" data-action="sign" aria-label="Toggle sign">&plusmn;</button>
+          <button class="key op" data-action="operator" data-value="÷">÷</button>
+
+          <button class="key" data-action="digit" data-value="7">7</button>
+          <button class="key" data-action="digit" data-value="8">8</button>
+          <button class="key" data-action="digit" data-value="9">9</button>
+          <button class="key op" data-action="operator" data-value="×">×</button>
+
+          <button class="key" data-action="digit" data-value="4">4</button>
+          <button class="key" data-action="digit" data-value="5">5</button>
+          <button class="key" data-action="digit" data-value="6">6</button>
+          <button class="key op" data-action="operator" data-value="−">−</button>
+
+          <button class="key" data-action="digit" data-value="1">1</button>
+          <button class="key" data-action="digit" data-value="2">2</button>
+          <button class="key" data-action="digit" data-value="3">3</button>
+          <button class="key op" data-action="operator" data-value="+">+</button>
+
+          <button class="key zero" data-action="digit" data-value="0">0</button>
+          <button class="key" data-action="decimal">.</button>
+          <button class="key eq" data-action="equals">=</button>
+        </div>
+      </div>
+
+      <!-- ===================== SCIENTIFIC ===================== -->
+      <div class="panel" data-panel="scientific">
+        <div class="display" id="display-scientific">
+          <div class="expression" id="expr-scientific">&nbsp;</div>
+          <div class="value" id="value-scientific">0</div>
+        </div>
+
+        <div class="angle-toggle" role="group" aria-label="Angle unit">
+          <button class="pill active" data-angle="deg">DEG</button>
+          <button class="pill" data-angle="rad">RAD</button>
+        </div>
+
+        <div class="keys keys-scientific" data-engine="scientific">
+          <button class="key fn2" data-fn="sin">sin</button>
+          <button class="key fn2" data-fn="cos">cos</button>
+          <button class="key fn2" data-fn="tan">tan</button>
+          <button class="key fn clear" data-action="clear">C</button>
+          <button class="key fn" data-action="backspace" aria-label="Delete">&#9003;</button>
+
+          <button class="key fn2" data-fn="ln">ln</button>
+          <button class="key fn2" data-fn="log">log</button>
+          <button class="key fn2" data-fn="sqrt">√</button>
+          <button class="key fn2" data-fn="sq">x²</button>
+          <button class="key op" data-action="operator" data-value="^">^</button>
+
+          <button class="key fn2" data-const="pi">π</button>
+          <button class="key fn2" data-const="e">e</button>
+          <button class="key fn2" data-fn="fact">n!</button>
+          <button class="key fn2" data-fn="inv">1/x</button>
+          <button class="key op" data-action="operator" data-value="÷">÷</button>
+
+          <button class="key" data-action="digit" data-value="7">7</button>
+          <button class="key" data-action="digit" data-value="8">8</button>
+          <button class="key" data-action="digit" data-value="9">9</button>
+          <button class="key fn" data-action="sign">&plusmn;</button>
+          <button class="key op" data-action="operator" data-value="×">×</button>
+
+          <button class="key" data-action="digit" data-value="4">4</button>
+          <button class="key" data-action="digit" data-value="5">5</button>
+          <button class="key" data-action="digit" data-value="6">6</button>
+          <button class="key fn2" data-fn="pct">%</button>
+          <button class="key op" data-action="operator" data-value="−">−</button>
+
+          <button class="key" data-action="digit" data-value="1">1</button>
+          <button class="key" data-action="digit" data-value="2">2</button>
+          <button class="key" data-action="digit" data-value="3">3</button>
+          <button class="key" data-action="decimal">.</button>
+          <button class="key op" data-action="operator" data-value="+">+</button>
+
+          <button class="key zero-sci" data-action="digit" data-value="0">0</button>
+          <button class="key eq eq-sci" data-action="equals">=</button>
+        </div>
+      </div>
+
+      <!-- ===================== BMI ===================== -->
+      <div class="panel" data-panel="bmi">
+        <div class="form-grid">
+          <label class="field">
+            <span>Weight</span>
+            <div class="input-row">
+              <input type="number" id="bmiWeight" placeholder="e.g. 65" min="0" step="0.1">
+              <select id="bmiWeightUnit">
+                <option value="kg">kg</option>
+                <option value="lb">lb</option>
+              </select>
+            </div>
+          </label>
+          <label class="field">
+            <span>Height</span>
+            <div class="input-row">
+              <input type="number" id="bmiHeight" placeholder="e.g. 170" min="0" step="0.1">
+              <select id="bmiHeightUnit">
+                <option value="cm">cm</option>
+                <option value="ftin">ft/in</option>
+              </select>
+            </div>
+          </label>
+          <div class="field" id="bmiFtInRow" hidden>
+            <span>&nbsp;</span>
+            <div class="input-row">
+              <input type="number" id="bmiFeet" placeholder="ft" min="0">
+              <input type="number" id="bmiInches" placeholder="in" min="0" max="11">
+            </div>
+          </div>
+        </div>
+        <button class="btn-calc" id="bmiCalcBtn">Calculate BMI</button>
+        <div class="result-card" id="bmiResult" hidden>
+          <div class="result-big" id="bmiValue">–</div>
+          <div class="result-tag" id="bmiCategory">–</div>
+        </div>
+      </div>
+
+      <!-- ===================== AGE ===================== -->
+      <div class="panel" data-panel="age">
+        <div class="form-grid">
+          <label class="field">
+            <span>Date of birth</span>
+            <input type="date" id="ageBirth">
+          </label>
+          <label class="field">
+            <span>Calculate age as of</span>
+            <input type="date" id="ageAsOf">
+          </label>
+        </div>
+        <button class="btn-calc" id="ageCalcBtn">Calculate Age</button>
+        <div class="result-card" id="ageResult" hidden>
+          <div class="result-big" id="ageValue">–</div>
+          <div class="result-tag" id="ageDays">–</div>
+        </div>
+      </div>
+
+      <!-- ===================== CGPA ===================== -->
+      <div class="panel" data-panel="cgpa">
+
+        <div class="cgpa-section">
+          <div class="cgpa-section-head">
+            <span>Grading scale</span>
+            <button type="button" class="link-btn" id="scaleResetBtn">Reset to default</button>
+          </div>
+          <p class="hint-inline">Every university grades differently. A page can't reliably "read" a photo of a grading table on its own — so upload it as a reference below, and set the exact points for your university's grades here once.</p>
+
+          <label class="upload-box" id="uploadBox">
+            <input type="file" accept="image/*" id="scaleImageInput" hidden>
+            <span id="uploadLabel">📎 Upload your university's grading criteria (optional, reference only)</span>
+          </label>
+          <div class="scale-image-preview" id="scaleImagePreview" hidden>
+            <img id="scaleImageEl" alt="Uploaded grading criteria">
+            <button type="button" class="link-btn" id="scaleImageRemove">Remove image</button>
+          </div>
+
+          <div class="scale-head">
+            <span>Grade</span><span>Points</span><span></span>
+          </div>
+          <div id="scaleRows"></div>
+          <button type="button" class="btn-add" id="scaleAddRow">+ Add grade</button>
+        </div>
+
+        <div class="cgpa-section">
+          <div class="cgpa-section-head"><span>Previous record (optional)</span></div>
+          <div class="form-grid">
+            <label class="field">
+              <span>Previous CGPA</span>
+              <input type="number" id="prevCgpa" placeholder="e.g. 3.42" min="0" max="4.3" step="0.01">
+            </label>
+            <label class="field">
+              <span>Previous credit hours</span>
+              <input type="number" id="prevCredits" placeholder="e.g. 60" min="0" step="0.5">
+            </label>
+          </div>
+        </div>
+
+        <div class="cgpa-section">
+          <div class="cgpa-section-head"><span>This semester's courses</span></div>
+          <div class="cgpa-head">
+            <span>Course</span><span>Credit Hrs</span><span>Grade</span><span></span>
+          </div>
+          <div id="cgpaRows"></div>
+          <button type="button" class="btn-add" id="cgpaAddRow">+ Add course</button>
+        </div>
+
+        <button class="btn-calc" id="cgpaCalcBtn">Calculate CGPA</button>
+
+        <div class="result-card" id="cgpaResultCard" hidden>
+          <div class="result-big" id="cgpaValue">–</div>
+          <div class="result-tag" id="cgpaSemTag">–</div>
+          <div class="result-tag" id="cgpaCumTag">–</div>
+        </div>
+      </div>
+
+      <!-- ===================== HEIGHT ===================== -->
+      <div class="panel" data-panel="height">
+        <div class="convert-row">
+          <label class="field">
+            <span>Centimeters</span>
+            <input type="number" id="heightCm" placeholder="e.g. 170" min="0" step="0.1">
+          </label>
+          <span class="convert-arrow">⇌</span>
+          <div class="field">
+            <span>Feet / Inches</span>
+            <div class="input-row">
+              <input type="number" id="heightFt" placeholder="ft" min="0">
+              <input type="number" id="heightIn" placeholder="in" min="0" max="11" step="0.1">
+            </div>
+          </div>
+        </div>
+        <p class="hint">Type in either side — the other updates automatically.</p>
+      </div>
+
+      <!-- ===================== DISTANCE ===================== -->
+      <div class="panel" data-panel="distance">
+        <div class="convert-row">
+          <label class="field">
+            <span>Amount</span>
+            <div class="input-row">
+              <input type="number" id="distValue" placeholder="e.g. 5" min="0" step="any">
+              <select id="distFrom">
+                <option value="km">Kilometers</option>
+                <option value="m">Meters</option>
+                <option value="cm">Centimeters</option>
+                <option value="mile">Miles</option>
+                <option value="yard">Yards</option>
+                <option value="feet">Feet</option>
+              </select>
+            </div>
+          </label>
+          <span class="convert-arrow">→</span>
+          <label class="field">
+            <span>Converted to</span>
+            <select id="distTo">
+              <option value="mile">Miles</option>
+              <option value="km">Kilometers</option>
+              <option value="m">Meters</option>
+              <option value="cm">Centimeters</option>
+              <option value="yard">Yards</option>
+              <option value="feet">Feet</option>
+            </select>
+          </label>
+        </div>
+        <div class="result-card" id="distResult">
+          <div class="result-big" id="distValueOut">0</div>
+        </div>
+      </div>
+
+    </section>
+
+    <p class="hint">On Standard/Scientific, your keyboard works too — digits, + − × ÷, Enter, Backspace, Esc</p>
+  </main>
+
+  <script src="logic.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>
