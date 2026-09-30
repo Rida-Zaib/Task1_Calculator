@@ -2,7 +2,6 @@
 
 A single glass-panel calculator app with **7 switchable modes** — Standard, Scientific, BMI, Age, CGPA, Height, and Distance — built with plain HTML, CSS, and vanilla JavaScript. No frameworks, no build step, no dependencies beyond two Google Fonts.
 
-**Live preview:** https://claude.ai/artifact/Xh6BE8wos5XaXhdkQ1BJaM
 
 ---
 
